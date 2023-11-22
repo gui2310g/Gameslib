@@ -7,11 +7,11 @@ const apikey = import.meta.env.VITE_API_KEY;
 
 const Home = () => {
     const [topGames, setTopGames] = useState([]);
-    const [page, setPage] = useState();
+  
     
     useEffect(() => {
     const topRatedUrl = `${GamesUrl}?key=${apikey}`;
-    const topRatedpage = `${GamesUrl}?key=${apikey}&page=2`
+   
 
     const getTopGames = async (url) => {
         const res = await fetch(url);
@@ -21,14 +21,7 @@ const Home = () => {
         
     };
 
-    const GetPage = async (url) => {
-        const res = await fetch(url);
-        const data = await res.json();
-        setPage(data.next);
-    }
-        
         getTopGames(topRatedUrl);
-        GetPage(topRatedpage);
     }, []);
 
     return (
